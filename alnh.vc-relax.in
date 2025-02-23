@@ -1,0 +1,50 @@
+&control
+    calculation = 'vc-relax',
+    prefix = 'aln',
+    outdir = './outdir',
+    pseudo_dir = '/home/clemens/software/q-e-qe-7.4/pseudo'
+    etot_conv_thr = 1e-5
+    forc_conv_thr = 1e-4
+/
+
+&system
+    ibrav =0,               ! hexagonale Struktur    
+    nat = 4,                 ! Anzahl der Atome in der Einheit
+    ntyp = 2,                ! Anzahl der Typen
+    ecutwfc = 80             ! Optimieren
+    ecutrho = 320
+    occupations = 'fixed'
+/
+&electrons
+    conv_thr = 1e-6
+    mixing_beta = 0.7
+    startingwfc      = 'random'
+    diagonalization  = 'david'
+/
+&ions !Bewegung der Atome
+  ion_dynamics     = 'bfgs'
+  bfgs_ndim        = 6
+/
+&cell !Bewegung der Zelle
+    cell_dofree='ibrav'
+    press = 131 
+/
+
+ATOMIC_SPECIES
+  Al  26.981539  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+  N   14.0067    N.pbe-n-kjpaw_psl.1.0.0.UPF
+
+K_POINTS (automatic)
+    6 6 6 0 0 0
+
+CELL_PARAMETERS (angstrom)
+3.11000000000000 0.00000000000000 0.00000000000000
+-1.55500000000000 2.69333900576960 0.00000000000000
+0.00000000000000 0.00000000000000 4.98000000000000
+
+ATOMIC_POSITIONS (crystal)
+Al 0.3333000000 0.6666000000 0.5000000000  0 0 0
+Al 0.6667000000 0.3334000000 0.0000000000  0 0 0
+N 0.3333000000 0.6666000000 0.8821000000   0 0 0
+N 0.6667000000 0.3334000000 0.3821000000   0 0 0
+

@@ -1,0 +1,44 @@
+&control
+    calculation = 'vc-relax'
+    prefix = 'aln'
+    outdir = './outdir' !extra Ordner für Dateien angelegt
+    pseudo_dir = '/home/clemens/software/q-e-qe-7.4/pseudo'
+    etot_conv_thr = 1e-5
+    forc_conv_thr = 1e-4
+/
+
+&system
+    ibrav=2, celldm(1) =5.000000000, 
+    nat=2, ntyp=2,
+    ecutwfc=80      !entsprecehnd optimieren
+    ecutrho=320
+    occupations = 'fixed'
+
+/
+&electrons
+    conv_thr=1e-7
+    mixing_beta = 0.7
+    startingwfc      = 'random'
+    diagonalization  = 'david'
+
+/
+&ions !Bewegung der Atome
+  ion_dynamics     = 'bfgs'
+  bfgs_ndim        = 6
+/
+&cell !Bewegung der Zelle
+    cell_dofree='ibrav'
+    press = 131 
+/
+
+ATOMIC_SPECIES
+ Al  26.981539  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+ N   14.0067    N.pbe-n-kjpaw_psl.1.0.0.UPF
+
+ATOMIC_POSITIONS (crystal)
+ Al 0.00 0.00 0.00 0 0 0 
+ N  0.50 0.50 0.50 0 0 0
+
+
+K_POINTS (automatic)
+  6 6 6 0 0 0   !je mehr desto besser

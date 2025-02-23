@@ -1,0 +1,32 @@
+&control
+    calculation = 'scf',
+    prefix = 'aln',
+    outdir = './outdir2',
+    pseudo_dir = '/home/clemens/software/q-e-qe-7.4/pseudo'
+    etot_conv_thr = 1e-5
+    forc_conv_thr = 1e-4
+/
+&system
+    ibrav=2, celldm(1) =4.0450, 
+    nat=2, ntyp=2,
+    ecutwfc=70      !entsprecehnd optimieren
+/
+&electrons
+    conv_thr=1e-6
+    mixing_beta = 0.7
+/
+&ions !Bewegung der Atome
+/
+&cell !Bewegung der Zelle
+    cell_dofree='ibrav'
+    press = 0.1 
+/
+ATOMIC_SPECIES
+  Al  26.981539  Al.pbe-n-kjpaw_psl.1.0.0.UPF
+  N   14.0067    N.pbe-n-kjpaw_psl.1.0.0.UPF
+
+ATOMIC_POSITIONS (crystal)
+ Al 0.00 0.00 0.00 0 0 0 
+ N  0.50 0.50 0.50 0 0 0
+K_POINTS (automatic)
+  11 11 11 0 0 0   !je mehr desto besser
